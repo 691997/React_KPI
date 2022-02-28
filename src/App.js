@@ -1,29 +1,24 @@
-import Menu from "./componants/MenuComponent";
-import { Navbar , NavbarBrand } from "reactstrap";
-import { DISHES } from "./shared/dishes";
 import { Component } from "react";
+import Main from './componants/main';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/configureStore';
+
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        dishes: DISHES
-    };
-}
-render () {
-  return (
-    <>
-    <Navbar dark color="primary">
-      <div className="container">
-        <NavbarBrand href="/">
-          Ristorante Con Fushion
-        </NavbarBrand>
-      </div>
+  render () {
+    return (
+      <>
+       <Provider store={store}>
+        <BrowserRouter>
+          <div className="App">
+            <Main />
+          </div>
+        </BrowserRouter>
+      </Provider>
 
-    </Navbar>
-     <Menu dishes={this.state.dishes} />
-    </>
-  );
-}
+      </>
+    );
+  }
 }
 export default App;
